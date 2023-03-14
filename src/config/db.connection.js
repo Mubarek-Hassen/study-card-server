@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 require('dotenv').config()
 
-// const connectionStr = process.env.MONGODB_URI
+const connectionStr = process.env.MONGODB_URI
 
 mongoose.set('strictQuery', true)
 
-// mongoose.connect(connectionStr)
+mongoose.connect(connectionStr)
 
 mongoose.connection.on('connected', ()=>console.log(`Connected!`))
 mongoose.connection.on('error', ()=>console.log(`error ===>>> ${error}`))
