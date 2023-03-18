@@ -15,3 +15,4 @@ const cardSchema = mongoose.Schema({
   timestamps: true
 })
 
+module.exports = Card = mongoose.model('card', cardSchema)
