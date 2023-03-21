@@ -1,19 +1,18 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
+const { Schema } = mongoose;
 
 
-const cardSchema = new mongoose.Schema({
-  card: {
+const cardSchema = new Schema({
     front: {
-      Type: String,
+      type: String,
       required: [true, "Please add description."]
     },
     back: {
-      Type: String,
+      type: String,
       required: [true, "Please add word."]
     },
-  }
 },{
   timestamps: true
 })
 
-module.exports = Card = mongoose.model('card', cardSchema)
+module.exports = mongoose.model('Card', cardSchema)
