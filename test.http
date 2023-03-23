@@ -1,1 +1,1 @@
-POST http://localhost:8080/new-card
+GET http://localhost:8080/cards/641a54f9159db6d4b7aec841

@@ -2,10 +2,13 @@ const Card = require('../models/Card')
 const mongoose = require('mongoose')
 
 const getCards = async(req,res)=>{
+  try{
     const cards = await Card.find({})
     res.json(cards)
+  } catch(error){
+    console.log(error)
   }
-
+}
   const createCard = async(req, res)=>{
     const {front, back} = req.body
     try {
@@ -16,7 +19,28 @@ const getCards = async(req,res)=>{
     }
   }
 
+  const getCard = async (req,res)=>{
+    try {
+      const data = await Card.findById(req.params.id)
+      const card = await res.json(data)
+      return card
+    } catch (error) {
+      console.log(error)
+      res.send(error)
+    }
+  }
+
+  const updateCard = async(req, res)=>{
+    try {
+      const data = await Card.findById(req.params.id)
+      
+    } catch (error) {
+      
+    }
+  }
+
 module.exports = {
   getCards,
+  getCard,
   createCard,
 }
