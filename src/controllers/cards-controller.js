@@ -14,6 +14,7 @@ const getCards = async(req,res)=>{
     try {
       const createdCard = await Card.create({front, back})
       res.json({msg: "Card Created!"})
+      res.send(createdCard)
     } catch (error) {
       res.status(400).json({error: 'Unable to add card.'})
     }
@@ -31,16 +32,22 @@ const getCards = async(req,res)=>{
   }
 
   const updateCard = async(req, res)=>{
+    const { front, back } = req.body
     try {
-      const data = await Card.findById(req.params.id)
-      
+      const data = await Card.findByIdAndUpdate(req.params.id, { front, back})
+      const card = await res.json(data)
+      return card
     } catch (error) {
-      
+      console.log(error)
+      res.send(error)
     }
   }
+
+
 
 module.exports = {
   getCards,
   getCard,
   createCard,
+  updateCard,
 }
