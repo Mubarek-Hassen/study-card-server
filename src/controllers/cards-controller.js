@@ -43,11 +43,21 @@ const getCards = async(req,res)=>{
     }
   }
 
-
+  const deleteCard = async(req, res)=>{
+    const { id } = req.params;
+    try {
+      const deletedCard = await Card.findByIdAndRemove(id)
+      res.json(id)
+    } catch (error) {
+      console.log(error)
+      res.send(error)
+    }
+  }
 
 module.exports = {
   getCards,
   getCard,
   createCard,
   updateCard,
+  deleteCard
 }
