@@ -1,6 +1,7 @@
 const Card = require('../models/Card')
-const mongoose = require('mongoose')
 
+
+// GET ALL CARDS
 const getCards = async(req,res)=>{
   try{
     const cards = await Card.find({})
@@ -9,6 +10,8 @@ const getCards = async(req,res)=>{
     console.log(error)
   }
 }
+
+// CREATE A CARD
   const createCard = async(req, res)=>{
     const {front, back} = req.body
     try {
@@ -20,6 +23,7 @@ const getCards = async(req,res)=>{
     }
   }
 
+  // GET A SINGLE CARD
   const getCard = async (req,res)=>{
     try {
       const data = await Card.findById(req.params.id)
@@ -31,6 +35,7 @@ const getCards = async(req,res)=>{
     }
   }
 
+  // UPDATE A CARD
   const updateCard = async(req, res)=>{
     const { front, back } = req.body
     try {
@@ -43,6 +48,7 @@ const getCards = async(req,res)=>{
     }
   }
 
+  // DELETE A CARD
   const deleteCard = async(req, res)=>{
     const { id } = req.params;
     try {
@@ -54,6 +60,7 @@ const getCards = async(req,res)=>{
     }
   }
 
+  // EXPORT ALL THE CARD CONTROLLING METHODS
 module.exports = {
   getCards,
   getCard,
