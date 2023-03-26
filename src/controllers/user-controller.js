@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 const registerUser = async (req,res)=>{
   const { email, name, password} = req.body;
 
-  const user = await userModel.findOne({ email });
+  const user = await userModel.create({ email, name, password });
 
   res.json(user);
 }

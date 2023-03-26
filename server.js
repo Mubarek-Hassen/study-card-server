@@ -3,9 +3,8 @@ const app = express()
 const PORT = 8080
 
 require('./src/config/db.connection')
-import { userRoutes } from './src/routes/user'
 const cardsRoutes = require('./src/routes/cards.js')
-// const userRoutes = require('./src/routes/user.js')
+const userRoutes = require('./src/routes/user.js')
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))

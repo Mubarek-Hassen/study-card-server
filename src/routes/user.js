@@ -1,12 +1,10 @@
-import express from "express";
-// import jwt from "jsonwebtoken"
-// import bcrypt from "bcrypt"
+const express = require('express')
 
-import { registerUser } from "../controllers/user-controller";
+const { registerUser } = require('../controllers/user-controller.js')
 
 const router = express.Router()
 
 router.post("/register", registerUser)
-router.post("/login", loginUser)
+// router.post("/login", loginUser)
 
-export {router as userRoutes}
+module.exports = router
