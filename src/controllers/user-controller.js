@@ -26,7 +26,7 @@ const registerUser = async (req,res)=>{
 // LOGIN USER
 
 const loginUser = async (req, res) => {
-  const { email, name, password} = req.body;
+  const { email, password} = req.body;
 
   const user = await userModel.findOne({ email });
 
@@ -41,6 +41,8 @@ const loginUser = async (req, res) => {
   }
 
   const token = jwt.sign({id: user._id}, "secret")
+
+  return res.json({token: token, userId: user._id})
 
 }
 
