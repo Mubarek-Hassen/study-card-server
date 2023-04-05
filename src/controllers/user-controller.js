@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
 
   const token = jwt.sign({id: user._id}, "secret")
 
-  return res.json({token: token, userId: user._id})
+  return res.json({token, userId: user._id})
 
 }
 
