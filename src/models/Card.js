@@ -11,6 +11,11 @@ const cardSchema = new Schema({
       type: String,
       required: [true, "Please add word."]
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    }
 },{
   timestamps: true
 })

@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = 8080
+const PORT = 8888
 const cors = require('cors')
 
 require('./src/config/db.connection')
