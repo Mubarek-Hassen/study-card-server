@@ -1,5 +1,5 @@
 const Card = require('../models/Card')
-
+const userModel = require("../models/User")
 
 // GET ALL CARDS
 const getCards = async(req,res)=>{
@@ -13,12 +13,13 @@ const getCards = async(req,res)=>{
 
 // CREATE A CARD
   const createCard = async(req, res)=>{
-    const {front, back} = req.body
+    const {front, back, } = req.body
     try {
-      const createdCard = await Card.create({front, back})
+      const createdCard = await Card.create({ front, back, })
       res.json({msg: "Card Created!"})
       res.send(createdCard)
     } catch (error) {
+      console.error(error)
       res.status(400).json({error: 'Unable to add card.'})
     }
   }

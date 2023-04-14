@@ -40,7 +40,7 @@ const loginUser = async (req, res) => {
     return res.json({message: "Email or password is incorrect!"})
   }
 
-  const token = jwt.sign({id: user._id}, "secret")
+  const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
 
   return res.json({token, userId: user._id})
 
