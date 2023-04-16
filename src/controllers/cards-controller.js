@@ -4,7 +4,8 @@ const userModel = require("../models/User")
 // GET ALL CARDS
 const getCards = async(req,res)=>{
   try{
-    const cards = await Card.find({})
+    req.user._id
+    const cards = await Card.find({ user: req.user.id})
     res.json(cards)
   } catch(error){
     console.log(error)
@@ -15,7 +16,7 @@ const getCards = async(req,res)=>{
   const createCard = async(req, res)=>{
     const {front, back, } = req.body
     try {
-      const createdCard = await Card.create({ front, back, })
+      const createdCard = await Card.create({ front, back, user: req.user._id})
       res.json({msg: "Card Created!"})
       res.send(createdCard)
     } catch (error) {

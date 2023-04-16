@@ -13,7 +13,7 @@ const {
 } = require('../controllers/cards-controller')
 
 router.get('/', protect, getCards)
-router.post('/new-card', createCard)
+router.post('/new-card', protect, createCard)
 router.route('/:id').get(getCard).put(updateCard).delete(deleteCard)
 
 
