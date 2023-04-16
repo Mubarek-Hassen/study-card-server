@@ -17,11 +17,10 @@ const getCards = async(req,res)=>{
     const {front, back, } = req.body
     try {
       const createdCard = await Card.create({ front, back, user: req.user._id})
-      res.json({msg: "Card Created!"})
-      res.send(createdCard)
+      return res.json({msg: "Card Created!", createdCard})
     } catch (error) {
       console.error(error)
-      res.status(400).json({error: 'Unable to add card.'})
+      return res.status(400).json({error: 'Unable to add card.'})
     }
   }
 
