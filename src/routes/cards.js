@@ -14,7 +14,7 @@ const {
 
 router.get('/', protect, getCards)
 router.post('/new-card', protect, createCard)
-router.route('/:id').get(getCard).put(updateCard).delete(deleteCard)
+router.route('/:id').get(protect, getCard).put(protect, updateCard).delete(protect, deleteCard)
 
 
 module.exports = router
