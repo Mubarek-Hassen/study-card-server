@@ -4,7 +4,6 @@ const userModel = require("../models/User")
 // GET ALL CARDS
 const getCards = async(req,res)=>{
   try{
-    req.user._id
     const cards = await Card.find({ user: req.user.id})
     res.json(cards)
   } catch(error){
