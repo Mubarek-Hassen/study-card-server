@@ -7,7 +7,7 @@ const getCards = async(req,res)=>{
     const cards = await Card.find({ user: req.user.id})
     res.json(cards)
   } catch(error){
-    console.log(error)
+    return res.status(500).json({message: error.message})
   }
 }
 
@@ -18,8 +18,7 @@ const getCards = async(req,res)=>{
       const createdCard = await Card.create({ front, back, user: req.user._id})
       return res.json({msg: "Card Created!", createdCard})
     } catch (error) {
-      console.error(error)
-      return res.status(400).json({error: 'Unable to add card.'})
+      return res.status(500).json({message: error.message})
     }
   }
 
@@ -31,7 +30,7 @@ const getCards = async(req,res)=>{
       return card
     } catch (error) {
       console.log(error)
-      res.send(error)
+      return res.status(500).json({message: error.message})
     }
   }
 
@@ -43,8 +42,7 @@ const getCards = async(req,res)=>{
       const card = await res.json(data)
       return card
     } catch (error) {
-      console.log(error)
-      res.send(error)
+      return res.status(500).json({message: error.message})
     }
   }
 
@@ -55,8 +53,7 @@ const getCards = async(req,res)=>{
       const deletedCard = await Card.findByIdAndRemove(id)
       res.json(id)
     } catch (error) {
-      console.log(error)
-      res.send(error)
+      return res.status(500).json({message: error.message})
     }
   }
 
